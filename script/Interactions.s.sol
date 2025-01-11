@@ -8,12 +8,12 @@ import {FundMe} from "../src/FundMe.sol";
 
 contract FundFundMe is Script {
     uint256 constant SEND_VALUE = 0.01 ether;
+
     function fundFundMe(address mostRecentlyDeployed) public {
-        
         vm.startBroadcast();
         FundMe(payable(mostRecentlyDeployed)).fund{value: SEND_VALUE}();
         vm.stopBroadcast();
-       
+
         //console.log("Funded FundMe with %s", SEND_VALUE);
     }
 
@@ -23,7 +23,6 @@ contract FundFundMe is Script {
         fundFundMe(mostRecentlyDeployed);
         vm.stopBroadcast();
     }
-
 }
 
 contract WithdrawFundMe is Script {
@@ -40,5 +39,4 @@ contract WithdrawFundMe is Script {
         withdrawFundMe(mostRecentlyDeployed);
         vm.stopBroadcast();
     }
-    
 }
